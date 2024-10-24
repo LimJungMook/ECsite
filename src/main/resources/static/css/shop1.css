@@ -1,0 +1,93 @@
+/* shop.css */
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.wrap {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Header */
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Form */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.form-control.fieldError {
+    border-color: red;
+    background-color: #ffe6e6;
+}
+
+/* Error messages */
+p {
+    color: red;
+    font-size: 12px;
+}
+
+/* Buttons */
+input[type="submit"],
+input[type="reset"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+input[type="reset"] {
+    background-color: #f44336;
+    color: white;
+}
+
+input[type="reset"]:hover {
+    background-color: #e53935;
+}
+
+/* Additional styling */
+label {
+    font-size: 14px;
+    color: #555;
+}
+
+.placeholder {
+    color: #999;
+}
+
+.input-wrapper {
+    padding: 20px;
+}

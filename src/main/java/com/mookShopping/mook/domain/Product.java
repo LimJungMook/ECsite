@@ -34,4 +34,11 @@ public class Product {
     public void addStock(int quantity) {
         this.quantity += quantity;
     }
+
+//    CREATE TABLE products(
+//            product_id INT PRIMARY KEY,
+//            name VARCHAR(255),
+//    quantity int,
+//    price int
+//);
 }

@@ -40,14 +40,14 @@ public class MemberController {
         member.setMail(memberForm.getMail());
         Long savedMemberId = memberService.saveMember(member);
         if (savedMemberId.equals(null)) {
-
+            // global error
         }
-        return "redirect:/myLogin";
+        return "login";
     }
 
     public String loginMember(@Valid MemberForm memberForm, BindingResult bindingResult, HttpServletRequest request) {
         if (bindingResult.hasErrors()) {
-            return "myLogin";
+            return "login";
         }
 
         Member member = new Member();

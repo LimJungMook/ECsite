@@ -31,7 +31,7 @@ public class Member {
 
 
 //    CREATE TABLE members(
-//    ID INT PRIMARY KEY,
+//    member_id INT PRIMARY KEY,
 //    NAME VARCHAR(255),
 //    mail VARCHAR(255),
 //    password VARCHAR(255),
