@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type">
+    <title>Insert title here</title>
+    <link rel="stylesheet" type="text/css" href="./css/shop.css">
+</head>
+<body>
+<div class="wrap">
+    <!--header-->
+    <div class="input-wrapper">
+        <h2>商品登録</h2>
+        <form role="form" action="registProduct" th:object="${product}" method="post">
+            <div class="center">
+                <input type="image" src="./img/shirts.jpg" class="img">
+            </div>
+
+            <label th:for="name">商品名</label>
+            <input type="text" th:field="*{name}" class="form-control" placeholder="상품명을 입력해주세요."
+                   th:class="${#fields.hasErrors('name')} ? 'form-control fieldError': 'form-control'">
+            <p th:if="${fields.hasErrors('name')}" th:errors="*{name}"></p>
+
+            <label th:for="price">値段</label>
+            <input type="text" th:field="*{price}" class="form-control" placeholder="가격을 입력해주세요."
+                th:class="${#fields.hasErrors('price')} ? 'form-control fieldError':'form-control'">
+            <p th:if="${fields.hasErrors('price')}" th:errors="*{price}"></p>
+
+            <label th:for="quantity">数量</label>
+            <input type="text" th:field="*{quantity}" class="form-control" placeholder="수량을 입력해주세요."
+                th:class="${#fields.hasErrors('quantity')} ? 'form-control fieldError':'form-control'">
+            <p th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></p>
+            <div>
+                <input type="submit" class="submit" value="登録">
+                <input type="reset" class="cancel" value="取り消し">
+            </div>
+        </form>
+    </div>
+
+</div>
+<!--footer-->
+<script type="text/javascript">
+</script>
+
+</body>
+</html>

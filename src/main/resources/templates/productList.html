@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="./css/shop.css">
+</head>
+<body>
+	<div class="wrap">
+<!--header-->
+		<div class="input-wrapper">
+			<h2>商品リスト</h2>
+			<a href='<c:url value="/moveRegisterProduct"/>' class="float_right">商品登録</a>
+			<div class="clearfix"></div>
+			<table>
+				<thead class="table_over">
+					<tr>
+						<td>商品番号</td>
+						<td>商品名</td>
+						<td>値段</td>
+<!--						<td>細部内容</td>-->
+<!--						<td>size</td>-->
+						<td>数量</td>
+					</tr>
+				</thead>
+<!--				<s:iterator value="productList">-->
+					<tr th:each="product: ${product}">
+						<td>
+							<a href='kurikae1?productDto.no=<s:property value="no" />'/>
+								<input type="text" th:field="*{id}">
+							</a>
+						</td>
+						<td th:text="${product.name}"></td>
+						<td th:text="${product.price}"></td>
+<!--						<td><s:property value="content" /></td>-->
+<!--						<td><s:property value="size" /></td>-->
+						<td th:text="${product.quantity}"></td>
+					</tr>
+<!--				</s:iterator>-->
+			</table>
+		</div>
+	</div>
+<!--footer-->
+</body>
+</html>

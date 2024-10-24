@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="./css/shop.css">
+</head>
+<body>
+	<div class="wrap">
+		<div th:replace="fragments/header :: header"/>
+<!--		<s:property value="#session.no" />-->
+		<div>
+			<main>
+			<div class="products">
+				<h2>main</h2>
+
+				<li><a href="/member/new">Home</a></li>
+				<a href="/paypal">hello</a>
+				<a href="/detail">detail</a>
+				<a href="/paypal">hello</a>
+				<a href="/paypal">hello</a>
+
+				<!--				<s:iterator value="productList">-->
+<!--					<a href='kurikaeDetailMain?productDto.no=<s:property value="no" />'/>-->
+<!--						<img src="./img/shirts.jpg">-->
+<!--						<p>-->
+<!--							<s:property value="name" />-->
+<!--						</p>-->
+<!--						<p class="price">-->
+<!--							<s:property value="price" />-->
+<!--						</p>-->
+<!--					</a>-->
+<!--				</s:iterator>-->
+
+				<div class="clearfix"></div>
+			</div>
+			</main>
+		</div>
+
+<!--footer-->
+	</div>
+</body>
+</html>

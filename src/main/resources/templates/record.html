@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type">
+    <title>Insert title here</title>
+    <link rel="stylesheet" type="text/css" href="./css/shop.css">
+</head>
+<body>
+<div class="wrap">
+    <!--header-->
+    <div class="input-wrapper">
+        <h2>購買内訳</h2>
+
+        <table>
+            <thead class="table_over">
+            <tr>
+                <td>注文番号</td>
+                <td>注文日付</td>
+                <td>商品名</td>
+                <td>値段</td>
+                <td>注文状態</td>
+                <td>取り消し</td>
+            </tr>
+            </thead>
+            <tr th:each="order : ${order}">
+                <td th:text="${order.id}"></td>
+                <td th:text="${order.date}"></td>
+                <td th:text="${order.name}"></td>
+                <td th:text="${order.price}"></td>
+                <td th:text="${order.status}"></td>
+                <td><a href='cancelOrder?ordersDto.no=<s:property value="no" />'/>
+                    <input type="button" value="取り消し"></a></td>
+            </tr>
+            <tr>
+                <td colspan="6" class="font_right">
+                    <a href='<c:url value="/myPage"/>'><input type="button" class="cancel" value="戻る"></a>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+<!--footer-->
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type">
+    <title>Insert title here</title>
+    <link rel="stylesheet" type="text/css" href="./css/shop.css">
+</head>
+<body>
+<div class="wrap">
+    <!--header-->
+    <div class="input-wrapper">
+        <h2>シャツ</h2>
+        <form role="form" action="moveOrder" th:object="${product}" method="post">
+            <div class="center">
+                <input type="image" src="img/shirts.jpg" class="img">
+            </div>
+            <label th:for="name">商品名</label>
+            <input type="text" th:field="*{name}" class="form-control" readonly>
+            <label th:for="price">値段</label>
+            <input type="text" th:field="*{price}" class="form-control" readonly>
+            <label th:for="quantity">数量</label>
+            <input type="number" th:field="*{quantity}" class="form-control"
+                   th:class="${#fields.hasErrors('quantity')}? 'form-control fieldError':'form-control'">
+            <p th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></p>
+
+            <div>
+                <button type="submit" class="submit">購買</button>
+                <button type="submit" class="cancel" th:formaction="shoppingbag">ショッピングバッグ</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!--footer-->
+</body>
+</html>

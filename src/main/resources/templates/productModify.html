@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="./css/shop.css">
+</head>
+<body>
+<div class="wrap">
+<!--header-->
+    <div class="input-wrapper">
+        <h2>商品情報変更</h2>
+        <form action="modifyProduct" id="input-form">
+            <div class="center">
+                <input type="image" src="./img/shirts.jpg" class="img">
+            </div>
+            <label th:for="id">商品番号</label>
+            <input type="text" th:field="*{id}" class="form-control" readonly >
+            <label th:for="name">商品名</label>
+            <input type="text" th:field="*{name}" class="form-control"
+                th:class="${#fields.hasErrors('name')} ? 'form-control fieldError':'form-control'">
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+            <label th:for="price">値段</label>
+            <input type="text" th:field="*{price}" class="form-control"
+                   th:class="${#fields.hasErrors('price')} ? 'form-control fieldError':'form-control'">
+            <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
+<!--            <label>細部内容</label>-->
+<!--            <input type="text" name="productDto.content" value="productDto.content">-->
+<!--            <label>size</label>-->
+<!--            <input type="text" name="productDto.size" value="productDto.size">-->
+            <label th:for="quantity">数量</label>
+            <input type="text" th:field="*{quantity}" class="form-control"
+                   th:class="${#fields.hasErrors('quantity')} ? 'form-control fieldError':'form-control'">
+            <p th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></p>
+            <div>
+                <input type="submit" class="submit" value="修訂">
+                <input type="reset" class="cancel" value="取り消し">
+            </div>
+        </form>
+    </div>
+
+</div>
+<!--footer-->
+</body>
+</html>

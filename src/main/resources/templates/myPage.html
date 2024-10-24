@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="./css/shop.css">
+</head>
+<body>
+<!--header-->
+<div class="input-wrapper">
+		<h2>my page</h2>
+		<div>
+			<a href='cart?cartDto.membersNo=#session.sessionNo" />' class="float_right">ショッピングバッグ</a>
+			<a href='purchaseList?ordersDto.memberno=#session.sessionNo" />' class="float_right">購買内訳</a>
+			<div class="clearfix"></div>
+		</div>
+		<form role="form" action="modifyMember" th:object="${memberForm}" method="post">
+
+			<label th:for="id">番号</label>
+			<input type="text" th:field="*{id}" class="form-control" readonly>
+
+			<label th:for="mail">mail</label>
+			<input type="text" th:field="*{mail}" class="form-control" readonly>
+
+			<label th:for="password">PASSWORD</label>
+			<input type="password" th:field="*{password}" class="form-control"
+				th:class="${#fields.hasErrors('password')} ? 'form-control fieldError' : 'form-control'">
+			<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+
+			<label th:for="confirmPassword">PASSWORD 確認</label>
+			<input type="password" th:field="*{confirmPassword}" class="form-control"
+				th:class="${#fields.hasErrors('confirmPassword')} ? 'form-control fieldError':'form-control'">
+			<p th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></p>
+
+			<label th:for="name">名前</label>
+			<input type="text" th:field="*{name}" class="form-control"
+				th:class="${#fields.hasErrors('name')}? 'form-control fieldError' : 'form-control'">
+			<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+
+			<label>住所</label>
+			<input type="text" th:field="address" class="form-control">
+
+			<input type="submit" value="情報修訂">
+		</form>
+
+	</div>
+<!--footer-->
+</body>
+</html>

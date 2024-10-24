@@ -1,0 +1,191 @@
+<style>
+
+    *{
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+#header{
+	width: 100%;
+	border: 0px red solid;
+}
+
+#header > .gnb{
+	width: 100%;
+	background-color: blue;
+	border: 0px yellow solid;
+}
+
+#header > .gnb > ul{
+	width: 100%;
+	height: 35px;
+	border: 0px blue solid;
+	line-height: 30px;
+	list-style: none;
+
+}
+
+#header > .gnb li{
+	float: right;
+	margin-right: 50px;
+	font-size:  1em;
+}
+
+#header > .gnb a{
+	color: #FFFFFF;
+}
+body{
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.products {
+    width: 50%;
+    height: 50%;
+    margin-left: 25%;
+    box-sizing: border-box;
+
+}
+.products h2{
+    color: #6A24FE;
+    margin-bottom: 20px;
+    font-size:48px;
+}
+.products img{
+  width: 150px;
+  height: 150px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.products a{
+  text-decoration: none;
+  height: 300px;
+  color: black;
+  float: left;
+  font-size: 16px;
+}
+
+.price{
+  margin-top: 4px;
+  margin-bottom: 80px;
+}
+
+.clearfix{
+  clear: both;
+}
+.input-wrapper{
+    width: 50%;
+    height: 50%;
+    margin-left: 25%;
+
+    box-sizing: border-box;
+}
+
+.input-wrapper > h2{
+    color: #6A24FE;
+    margin-bottom: 20px;
+    font-size: 48px;
+}
+#input-form > input{
+    width: 100%;
+    height: 48px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    background-color: #F8F8F8;
+}
+#input-form > select{
+    width: 100%;
+    height: 48px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    background-color: #F8F8F8;
+}
+#input-form > input::placeholder{
+    color: #D2D2D2;
+}
+#input-form > input[type="submit"]{
+    color: #fff;
+    font-size: 16px;
+    background-color: #6A24FE;
+    margin-top: 20px;
+}
+#input-form > input[type="reset"]{
+    color: #fff;
+    font-size: 16px;
+    background-color: gray;
+    margin-top: 8px;
+}
+
+.input-wrapper table{
+    width: 100%;
+
+}
+
+.table_over{
+    background : blue;
+    color: white;
+}
+.font_right{
+    text-align: right;
+}
+
+.submit{
+    width: 100%;
+    height: 48px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 16px;
+    background-color: #6A24FE;
+    margin-top: 20px;
+}
+
+.cancel{
+    width: 100%;
+    height: 48px;
+    margin-top: 8px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    background-color: gray;
+    color: #fff;
+    font-size: 16px;
+}
+.float_right{
+    float: right;
+	font-size:  1em;
+	margin-left: 30px;
+}
+.img{
+    height: 200px;
+}
+.center{
+    text-align:center;
+}
+
+#footer{
+	width: 100%;
+	background-color: blue;
+	border: 0px yellow solid;
+	color: white;
+}
+
+#manager {
+   height:15px;
+   width:15px;
+}
+
+.custom-radio input[type="radio"]{
+	width:20px;
+	height:20px;
+}
+
+
+
+  </style>

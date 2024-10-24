@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayPal OAuth2 Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #0070ba;
+        }
+        .login-button {
+            padding: 10px 20px;
+            background-color: #0070ba;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .login-button:hover {
+            background-color: #005ea6;
+        }
+    </style>
+</head>
+<body>
+<h1>PayPal OAuth2 Login</h1>
+<a href="/oauth2/authorization/paypal" class="login-button">Login with PayPal</a>
+
+<div id="message"></div>
+
+<script>
+    // 메시지를 표시하기 위한 기본 스크립트
+    const urlParams = new URLSearchParams(window.location.search);
+    const success = urlParams.get('success');
+    const failure = urlParams.get('failure');
+
+    if (success) {
+        document.getElementById('message').innerText = 'Successfully connected to PayPal!';
+    } else if (failure) {
+        document.getElementById('message').innerText = 'Failed to connect to PayPal.';
+    }
+</script>
+</body>
+</html>

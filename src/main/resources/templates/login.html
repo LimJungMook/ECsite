@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="./css/shop.css">
+</head>
+<body>
+	<div class="wrap">
+<!--header-->
+		<div class="input-wrapper">
+			<h2>login</h2>
+			<form role="form" action="login" th:object="${memberForm}" method="post">
+				<label th:for="name">ID</label>
+				<input type="text" th:field="*{name}" class="form-control" placeholder="ID"
+					   th:class="${#fields.hasErrors('name')} ? 'form-control fieldError' : 'form-control'">
+				<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+				<label th:for="password">PASSWORD</label>
+				<input type="text" th:field="*{password}" placeholder="PASSWORD" class="form-control"
+					th:class="${#fields.hasErrors('password')}? 'form-control fieldError' : 'form-control'">
+				<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+				<input type="submit" value="login">
+				<a href="/member/new">社員加入</a>
+			</form>
+		</div>
+<!--		<s:property value="membersDto.name"/>-->
+<!--		<s:property value="membersDto.id"/>-->
+<!--		<s:property value="membersDto.password"/>-->
+<!--		<s:property value="membersDto.address"/>-->
+	</div>
+<!--footer-->
+</body>
+</html>
