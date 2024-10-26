@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="./css/shop.css">
+<link rel="stylesheet" type="text/css" href="/css/shop1.css">
 </head>
 <body>
 	<div class="wrap">
@@ -26,8 +26,8 @@
 <!--				<s:iterator value="productList">-->
 					<tr th:each="product: ${product}">
 						<td>
-							<a href='kurikae1?productDto.no=<s:property value="no" />'/>
-								<input type="text" th:field="*{id}">
+							<a th:href="@{'/kurikae1?productDto.no=' + ${product.id}}">
+								<span th:text="${product.id}"></span>
 							</a>
 						</td>
 						<td th:text="${product.name}"></td>
