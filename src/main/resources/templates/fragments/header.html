@@ -1,19 +1,27 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Header Example</title>
+</head>
+<body>
 <header id="header">
 	<div class="gnb">
 		<ul>
-			<li><a href='<c:url value="/manageProduct"/>'>商品管理</a></li>
-			<li><a href='myPage?membersDto.no= <s:property value="#session.sessionNo" />'>my page</a></li>
+			<li><a th:href="@{/manageProduct}">商品管理</a></li>
+			<li><a th:href="@{/myPage(membersDto.no=${session.sessionNo})}">my page</a></li>
 			<li>
 				<form th:action="@{/logout}" method="post">
 					<button type="submit">logout</button>
 				</form>
 			</li>
-			<li><a href='<c:url value="/moveRegister"/>'>社員加入</a></li>
-			<li><a href='<c:url value="/moveLogin"/>'>ログイン</a></li>
-			<li><a href='<c:url value="/main"/>'>home</a></li>
-			<li><a href='cart?cartDto.membersNo= <s:property value="#session.sessionNo" />' />cart</a></li>
+			<li><a th:href="@{/moveRegister}">社員加入</a></li>
+			<li><a th:href="@{/moveLogin}">ログイン</a></li>
+			<li><a th:href="@{/main}">home</a></li>
+			<li><a th:href="@{/cart(cartDto.membersNo=${session.sessionNo})}">cart</a></li>
 		</ul>
 	</div>
 	<div class="clearfix"></div>
 </header>
+</body>
+</html>

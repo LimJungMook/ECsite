@@ -2,6 +2,7 @@ package com.mookShopping.mook.controller;
 
 import com.mookShopping.mook.domain.Member;
 import com.mookShopping.mook.service.MemberService;
+import com.mookShopping.mook.web.LoginForm;
 import com.mookShopping.mook.web.MemberForm;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,7 +30,7 @@ public class MemberController {
     }
 
     @PostMapping("/member/new")
-    public String saveMember(@Valid MemberForm memberForm, BindingResult result) {
+    public String saveMember(@Valid MemberForm memberForm, BindingResult result, Model model) {
 
         if (result.hasErrors()) {
             return "register";
@@ -38,21 +39,25 @@ public class MemberController {
         member.setName(memberForm.getName());
         member.setPassword(memberForm.getPassword());
         member.setMail(memberForm.getMail());
+        member.setAddress(memberForm.getAddress());
         Long savedMemberId = memberService.saveMember(member);
         if (savedMemberId.equals(null)) {
             // global error
         }
+
+        model.addAttribute("loginForm", new LoginForm());
         return "login";
     }
 
-    public String loginMember(@Valid MemberForm memberForm, BindingResult bindingResult, HttpServletRequest request) {
+    @PostMapping("/member/login")
+    public String loginMember(@Valid LoginForm loginForm, BindingResult bindingResult, HttpServletRequest request) {
         if (bindingResult.hasErrors()) {
             return "login";
         }
 
         Member member = new Member();
-        member.setName(memberForm.getName());
-        member.setPassword(memberForm.getPassword());
+        member.setMail(loginForm.getMail());
+        member.setPassword(loginForm.getPassword());
         Member loginMember = memberService.login(member);
 
         if (loginMember == null) {
@@ -60,7 +65,7 @@ public class MemberController {
         }
 
         HttpSession session = request.getSession();
-        session.setAttribute("", loginMember);
+        session.setAttribute("loginMember", loginMember);
 
         return "main";
     }

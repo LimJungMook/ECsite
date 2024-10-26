@@ -29,8 +29,8 @@ public class MemberRepository {
     }
 
     public Member login(Member member) {
-        return em.createQuery("select m from Member m where name =: name and password =:password",Member.class)
-                .setParameter("name", member.getName())
+        return em.createQuery("select m from Member m where mail =: mail and password =:password",Member.class)
+                .setParameter("mail", member.getMail())
                 .setParameter("password", member.getPassword())
                 .getSingleResult();
     }

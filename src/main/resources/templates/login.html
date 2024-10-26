@@ -10,11 +10,11 @@
 <!--header-->
 		<div class="input-wrapper">
 			<h2>login</h2>
-			<form role="form" action="login" th:object="${memberForm}" method="post">
-				<label th:for="name">ID</label>
-				<input type="text" th:field="*{name}" class="form-control" placeholder="ID"
-					   th:class="${#fields.hasErrors('name')} ? 'form-control fieldError' : 'form-control'">
-				<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+			<form role="form" action="/member/login" th:object="${loginForm}" method="post">
+				<label th:for="mail">ID</label>
+				<input type="text" th:field="*{mail}" class="form-control" placeholder="ID"
+					   th:class="${#fields.hasErrors('mail')} ? 'form-control fieldError' : 'form-control'">
+				<p th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}"></p>
 				<label th:for="password">PASSWORD</label>
 				<input type="text" th:field="*{password}" placeholder="PASSWORD" class="form-control"
 					th:class="${#fields.hasErrors('password')}? 'form-control fieldError' : 'form-control'">

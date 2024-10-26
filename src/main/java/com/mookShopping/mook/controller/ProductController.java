@@ -11,29 +11,33 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-@Controller("/product")
+@Controller
 @Slf4j
 public class ProductController {
 
-    @GetMapping("/new")
+    @GetMapping("/product/new")
     public String newProductForm(Model model) {
-        model.addAttribute("product", new ProductForm());
+        model.addAttribute("productForm", new ProductForm());
         return "productRegi";
     }
 
-    @GetMapping("/detail")
+    @GetMapping("/product/detail")
     public String getDetail(Model model) {
         model.addAttribute("product", new ProductForm());
         return "detail";
     }
 
-    @GetMapping("/modify")
+    @GetMapping("/product/modify")
     public String modifyForm(Model model) {
         return "productModify";
     }
 
-//    @PostMapping("/product/new")
-//    public String saveProduct(@Valid Product product, BindingResult bindingResult) {
-//
-//    }
+    @PostMapping("/product/new")
+    public String saveProduct(@Valid ProductForm productForm, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "productRegi";
+        }
+
+        return "main";
+    }
 }

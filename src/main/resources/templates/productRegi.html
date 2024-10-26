@@ -3,14 +3,14 @@
 <head>
     <meta http-equiv="Content-Type">
     <title>Insert title here</title>
-    <link rel="stylesheet" type="text/css" href="./css/shop.css">
+    <link rel="stylesheet" type="text/css" href="/css/shop1.css">
 </head>
 <body>
 <div class="wrap">
     <!--header-->
     <div class="input-wrapper">
         <h2>商品登録</h2>
-        <form role="form" action="registProduct" th:object="${product}" method="post">
+        <form role="form" action="/product/new" th:object="${productForm}" method="post">
             <div class="center">
                 <input type="image" src="./img/shirts.jpg" class="img">
             </div>
@@ -18,12 +18,12 @@
             <label th:for="name">商品名</label>
             <input type="text" th:field="*{name}" class="form-control" placeholder="상품명을 입력해주세요."
                    th:class="${#fields.hasErrors('name')} ? 'form-control fieldError': 'form-control'">
-            <p th:if="${fields.hasErrors('name')}" th:errors="*{name}"></p>
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrect date</p>
 
             <label th:for="price">値段</label>
             <input type="text" th:field="*{price}" class="form-control" placeholder="가격을 입력해주세요."
                 th:class="${#fields.hasErrors('price')} ? 'form-control fieldError':'form-control'">
-            <p th:if="${fields.hasErrors('price')}" th:errors="*{price}"></p>
+            <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
 
             <label th:for="quantity">数量</label>
             <input type="text" th:field="*{quantity}" class="form-control" placeholder="수량을 입력해주세요."
