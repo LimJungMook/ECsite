@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div class="wrap">
-<!--		header-->
+		<div th:replace="fragments/header :: header"/>
 		<div class="input-wrapper">
 			<h2>社員加入</h2>
 			<form role="form" action="/member/new" th:object="${memberForm}" method="post">

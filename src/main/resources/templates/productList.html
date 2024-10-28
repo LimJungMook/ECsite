@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div class="wrap">
-<!--header-->
+		<div th:replace="fragments/header :: header"/>
 		<div class="input-wrapper">
 			<h2>商品リスト</h2>
 			<a href='<c:url value="/moveRegisterProduct"/>' class="float_right">商品登録</a>
@@ -26,7 +26,7 @@
 <!--				<s:iterator value="productList">-->
 					<tr th:each="product: ${product}">
 						<td>
-							<a th:href="@{'/kurikae1?productDto.no=' + ${product.id}}">
+							<a th:href="@{/product/detail/{id} (id=${product.id})}">
 								<span th:text="${product.id}"></span>
 							</a>
 						</td>

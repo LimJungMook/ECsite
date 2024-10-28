@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -51,11 +52,11 @@ public class ProductController {
     }
 
 
-    @GetMapping("/product/detail")
-    public String getDetail(Model model) {
-
-        model.addAttribute("product", new ProductForm());
-        return "detail";
+    @GetMapping("/product/detail/{productId}")
+    public String getDetail(Model model, @PathVariable Long productId) {
+        Product selectedProduct = productService.findOneProduct(productId);
+        model.addAttribute("product", selectedProduct);
+        return "productDetail";
     }
 
     @GetMapping("/product/modify")

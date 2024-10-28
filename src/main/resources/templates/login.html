@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div class="wrap">
-<!--header-->
+		<div th:replace="fragments/header :: header"/>
 		<div class="input-wrapper">
 			<h2>login</h2>
 			<form role="form" action="/member/login" th:object="${loginForm}" method="post">
