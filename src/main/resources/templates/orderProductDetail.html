@@ -7,13 +7,14 @@
 </head>
 <body>
 <div class="wrap">
-    <!--header-->
+    <div th:replace="fragments/header :: header"/>
     <div class="input-wrapper">
         <h2>シャツ</h2>
-        <form role="form" action="moveOrder" th:object="${product}" method="post">
+        <form role="form" action="/order/new" th:object="${product}" method="post">
             <div class="center">
                 <input type="image" src="img/shirts.jpg" class="img">
             </div>
+            <input type="hidden" th:field="*{id}"/>
             <label th:for="name">商品名</label>
             <input type="text" th:field="*{name}" class="form-control" readonly>
             <label th:for="price">値段</label>

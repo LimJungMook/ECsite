@@ -4,7 +4,6 @@ import com.mookShopping.mook.domain.Product;
 import com.mookShopping.mook.service.ProductService;
 import com.mookShopping.mook.web.ProductForm;
 import jakarta.validation.Valid;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -47,7 +46,7 @@ public class ProductController {
     @GetMapping("/product/productList")
     public String getList(Model model) {
         List<Product> productList = productService.findAllProduct();
-        model.addAttribute("product",productList );
+        model.addAttribute("product", productList);
         return "productList";
     }
 
@@ -64,5 +63,11 @@ public class ProductController {
         return "productModify";
     }
 
-
+    @GetMapping("/product/orderProductDetail/{productId}")
+    public String getOrderProductDetail(Model model, @PathVariable Long productId) {
+        Product selectedProduct = productService.findOneProduct(productId);
+        selectedProduct.setQuantity(0);
+        model.addAttribute("product", selectedProduct);
+        return "orderProductDetail";
+    }
 }

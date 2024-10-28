@@ -19,7 +19,7 @@ public class Product {
 
     private String name;
 
-    private Long quantity;
+    private int quantity;
 
     private Long price;
 

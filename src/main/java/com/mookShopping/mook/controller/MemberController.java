@@ -49,6 +49,13 @@ public class MemberController {
         return "login";
     }
 
+    @GetMapping("/member/login")
+    public String getLoginMember(Model model) {
+        model.addAttribute("loginForm", new LoginForm());
+        return "login";
+    }
+
+
     @PostMapping("/member/login")
     public String loginMember(@Valid LoginForm loginForm, BindingResult bindingResult, HttpServletRequest request) {
         if (bindingResult.hasErrors()) {
@@ -76,7 +83,7 @@ public class MemberController {
         if (session != null) {
             session.invalidate();
         }
-        return "redirect:/main";
+        return "redirect:/";
     }
 
 //    private void expireCookie(HttpServletResponse response,String memberId) {

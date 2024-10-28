@@ -3,7 +3,8 @@
 <head>
 <meta http-equiv="Content-Type">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="./css/shop.css">
+	<link rel="stylesheet" type="text/css" href="/css/shop1.css">
+
 </head>
 <body>
 <div th:replace="fragments/header :: header"/>
@@ -37,8 +38,8 @@
 				th:class="${#fields.hasErrors('name')}? 'form-control fieldError' : 'form-control'">
 			<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
 
-			<label>住所</label>
-			<input type="text" th:field="address" class="form-control">
+			<label th:for="address">住所</label>
+			<input type="text" th:field="*{address}" class="form-control">
 
 			<input type="submit" value="情報修訂">
 		</form>

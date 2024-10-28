@@ -3,52 +3,48 @@
 <head>
     <meta http-equiv="Content-Type">
     <title>Insert title here</title>
-    <link rel="stylesheet" type="text/css" href="./css/shop.css">
+    <link rel="stylesheet" type="text/css" href="/css/shop1.css">
 </head>
 <body>
 <div class="wrap">
     <div th:replace="fragments/header :: header"/>
     <div class="input-wrapper">
         <h2>注文ページ</h2>
-        <form role="form" action="order" method="post">
+        <form role="form" action="/order/order" th:object="${orderForm}" method="post">
 
             <table>
                 <thead class="table_over">
                 <tr>
+                    <td>商品ID</td>
                     <td>商品名</td>
                     <td>値段</td>
-                    <td>細部内容</td>
-                    <td>size</td>
                     <td>数量</td>
                 </tr>
                 </thead>
+                <tr>
 
-                <div th:if="${product} != null &&!${product}.isEmpty()">dd
-                    <tr th:each="product: ${product}">
+                    <td>
+                        <input type="number" th:field="*{product.id}">
+                    </td>
+                    <td th:text="${orderForm.product.name}">
+                    </td>
+                    <td th:text="${orderForm.product.price}"></td>
+                    <!--<td><s:property value="content" /></td>-->
+                    <!--<td><s:property value="size" /></td>-->
+                    <td>
+                        <input type="number" th:field="*{product.quantity}">
+                    </td>
+                </tr>
 
-                        <td th:text="${product.id}"></td>
 
-                        <td th:text="${product.name}">
-                            <input type="hidden" name="ordersDto.productString" value="no">
-                            <input type="hidden" name="ordersDto.memberString" value="#session.sessionNo">
-                        </td>
-                        <td th:text="${product.price}"></td>
-                        <!--<td><s:property value="content" /></td>-->
-                        <!--<td><s:property value="size" /></td>-->
-                        <td th:text="${product.quantity}">
-                            <input type="hidden" name="ordersDto.quantityString" value="quantity">
-                        </td>
-                    </tr>
-
-                </div>
                 <tr class="table_over">
                     <td>총 가격</td>
                     <td colspan="4" class="font_right">20,000</td>
                 </tr>
                 <tr>
                     <td colspan="5" class="font_right">
-                        <input type="submit"  class="submit" value="注文">
-                        <a href='<c:url value="/main"/>'>
+                        <input type="submit" class="submit" value="注文">
+                        <a th:href="@{/}">
                             <input type="button" class="cancel" value="Home">
                         </a>
                     </td>

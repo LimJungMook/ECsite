@@ -16,7 +16,7 @@ public class ProductForm {
 
     @NotNull(message = "수량을 입력하세요")
     @Min(value = 1)
-    private Long quantity;
+    private int quantity;
 
     @NotNull(message = "가격을 입력하세요")
     @Min(value = 1)

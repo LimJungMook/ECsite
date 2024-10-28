@@ -1,194 +1,198 @@
 /* 기본 스타일 */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 현대적인 글꼴 */
-    background-color: #f4f4f9; /* 부드러운 회색 배경 */
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
     margin: 0;
     padding: 0;
+    margin-top: 10px;
 }
 
-/* 래퍼 */
-.wrap {
-    width: 100%;
-    max-width: 1200px; /* 최대 너비 설정 */
-    margin: 0 auto; /* 가운데 정렬 */
-    padding: 20px; /* 패딩 추가 */
-    background-color: #ffffff; /* 흰색 배경 */
-    border-radius: 8px; /* 경계 반경 */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
-}
-
-/* 헤더 스타일 */
+/* Header 스타일 */
 header {
-    background-color: #2c3e50; /* 다크 블루 */
-    color: white;
-    padding: 15px 0; /* 패딩 추가 */
+    background-color: #2c3e50;
+    padding: 15px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-header .gnb ul {
+.gnb {
+    display: flex;
+    justify-content: center;
+}
+
+.gnb ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.gnb ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.gnb ul li a:hover {
+    background-color: #34495e;
+    color: #ecf0f1;
+}
+
+/* Wrap 스타일 */
+.wrap {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 제목 스타일 */
+h2 {
+    font-size: 24px;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 이미지 중앙 정렬 */
+.center {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 폼 스타일 */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.form-control[readonly] {
+    background-color: #f7f7f7;
+    color: #555;
+}
+
+.form-control.fieldError {
+    border-color: #e74c3c;
+    background-color: #fee;
+}
+
+/* 버튼 스타일 */
+button.submit,
+button.cancel {
+    width: 48%;
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.submit {
+    background-color: #27ae60;
+    margin-right: 4%;
+}
+
+button.submit:hover {
+    background-color: #218c53;
+}
+
+button.cancel {
+    background-color: #3498db;
+}
+
+button.cancel:hover {
+    background-color: #2980b9;
+}
+
+/* Navigation Links */
+.nav-links {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.nav-links a {
+    color: #333;
+    font-size: 16px;
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #ddd;
+}
+
+/* Product Container */
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product-card {
+    width: 30%; /* 한 줄에 3개 */
+    background-color: #fafafa;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
     text-align: center;
 }
 
-header .gnb ul li {
-    display: inline-block;
-    margin: 0 20px;
+.product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
-header .gnb ul li a {
-    color: white;
-    text-decoration: none;
+.product-card img {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+}
+
+.product-info {
+    padding: 10px;
+}
+
+.product-name {
     font-size: 18px;
-    padding: 10px 15px;
-    border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
+    color: #333;
+    margin: 10px 0;
 }
 
-header .gnb ul li a:hover {
-    background-color: #34495e; /* 호버 색상 */
-}
-
-/* 메인 스타일 */
-main {
-    padding: 20px 0; /* 메인 영역 패딩 */
-}
-
-.products {
-    display: flex; /* Flexbox로 제품 나열 */
-    flex-wrap: wrap; /* 줄 바꿈 설정 */
-    justify-content: center; /* 가운데 정렬 */
-}
-
-.products h2 {
-    font-size: 28px; /* 제목 크기 */
-    text-align: center; /* 가운데 정렬 */
-    color: #2c3e50; /* 제목 색상 */
-    margin-bottom: 20px; /* 아래 여백 */
-}
-
-.products a {
-    display: block; /* 블록으로 변경하여 전체 영역 클릭 가능 */
-    width: 200px; /* 제품 카드 너비 */
-    margin: 10px; /* 여백 추가 */
-    text-align: center; /* 텍스트 가운데 정렬 */
-    color: #2c3e50; /* 링크 색상 */
-    text-decoration: none; /* 링크 기본 장식 제거 */
-    border: 1px solid #bdc3c7; /* 테두리 */
-    border-radius: 8px; /* 경계 반경 */
-    transition: transform 0.3s, box-shadow 0.3s; /* 변형 및 그림자 효과 추가 */
-}
-
-.products a:hover {
-    transform: scale(1.05); /* 마우스 오버 시 확대 효과 */
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 효과 */
-}
-
-/* 제품 이미지 스타일 */
-.products img {
-    width: 100%; /* 너비 100% */
-    border-top-left-radius: 8px; /* 왼쪽 위 경계 반경 */
-    border-top-right-radius: 8px; /* 오른쪽 위 경계 반경 */
-}
-
-/* 가격 스타일 */
-.price {
-    font-weight: bold; /* 두껍게 */
-    color: #e74c3c; /* 빨간색 */
-    margin: 10px 0; /* 여백 추가 */
+.product-price {
+    font-size: 16px;
+    color: #e74c3c;
+    font-weight: bold;
 }
 
 /* Clearfix */
 .clearfix::after {
     content: "";
-    display: block;
+    display: table;
     clear: both;
-}
-
-/* 입력 래퍼 스타일 */
-.input-wrapper {
-    margin-top: 30px; /* 위쪽 여백 추가 */
-}
-
-/* 폼 스타일 */
-form {
-    display: flex; /* Flexbox로 요소 정렬 */
-    flex-direction: column; /* 세로 정렬 */
-    padding: 20px; /* 패딩 추가 */
-    background-color: #ecf0f1; /* 부드러운 회색 배경 */
-    border-radius: 8px; /* 경계 반경 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
-}
-
-label {
-    font-size: 16px; /* 레이블 크기 */
-    margin-bottom: 5px; /* 아래쪽 여백 */
-    color: #2c3e50; /* 레이블 색상 */
-}
-
-.form-control {
-    width: 100%; /* 너비 100% */
-    padding: 12px; /* 패딩 증가 */
-    margin-bottom: 15px; /* 아래쪽 여백 */
-    border: 1px solid #bdc3c7; /* 테두리 */
-    border-radius: 4px; /* 경계 반경 */
-    font-size: 16px; /* 글자 크기 */
-    box-sizing: border-box; /* 박스 크기 조정 */
-    transition: border-color 0.3s; /* 테두리 색상 변화 효과 */
-}
-
-.form-control:focus {
-    border-color: #3498db; /* 포커스 시 색상 변경 */
-    outline: none; /* 기본 윤곽선 제거 */
-}
-
-.form-control.fieldError {
-    border-color: red; /* 오류 발생 시 빨간 테두리 */
-    background-color: #ffe6e6; /* 오류 발생 시 배경 색상 */
-}
-
-/* 버튼 스타일 */
-.submit,
-.cancel {
-    width: 100%; /* 너비 100% */
-    padding: 12px; /* 패딩 추가 */
-    border: none; /* 기본 테두리 제거 */
-    border-radius: 4px; /* 경계 반경 */
-    font-size: 16px; /* 글자 크기 */
-    cursor: pointer; /* 커서 모양 변경 */
-    margin-top: 10px; /* 위쪽 여백 */
-    transition: background-color 0.3s; /* 배경 색상 변화 효과 */
-}
-
-.submit {
-    background-color: #4CAF50; /* 초록색 */
-    color: white; /* 흰색 텍스트 */
-}
-
-.submit:hover {
-    background-color: #45a049; /* 초록색 호버 색상 */
-}
-
-.cancel {
-    background-color: #f44336; /* 빨간색 */
-    color: white; /* 흰색 텍스트 */
-}
-
-.cancel:hover {
-    background-color: #e53935; /* 빨간색 호버 색상 */
-}
-
-/* 오류 메시지 스타일 */
-p {
-    color: red; /* 빨간색 */
-    font-size: 12px; /* 작은 글자 크기 */
-}
-
-/* 푸터 스타일 */
-footer {
-    text-align: center; /* 가운데 정렬 */
-    padding: 20px 0; /* 패딩 추가 */
-    background-color: #2c3e50; /* 다크 블루 */
-    color: white; /* 흰색 텍스트 */
-    margin-top: 20px; /* 위 여백 */
 }

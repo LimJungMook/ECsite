@@ -1,43 +1,40 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type">
-<title>Insert title here</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Main Page</title>
 	<link rel="stylesheet" type="text/css" href="/css/shop1.css">
 </head>
 <body>
-	<div class="wrap">
-		<div th:replace="fragments/header :: header"/>
-<!--		<s:property value="#session.no" />-->
-		<div>
-			<main>
-			<div class="products">
-				<h2>main</h2>
+<div class="wrap">
+	<div th:replace="fragments/header :: header"></div>
+	<main>
+		<div class="products">
+			<h2>Main</h2>
 
-				<a href="/member/new">Home</a>
-				<a href="/paypal">hello</a>
-				<a href="/product/detail">detail</a>
-				<a href="/product/new">product</a>
-				<a href="/paypal">hello</a>
-
-				<!--				<s:iterator value="productList">-->
-<!--					<a href='kurikaeDetailMain?productDto.no=<s:property value="no" />'/>-->
-<!--						<img src="./img/shirts.jpg">-->
-<!--						<p>-->
-<!--							<s:property value="name" />-->
-<!--						</p>-->
-<!--						<p class="price">-->
-<!--							<s:property value="price" />-->
-<!--						</p>-->
-<!--					</a>-->
-<!--				</s:iterator>-->
-
-				<div class="clearfix"></div>
+			<!-- Navigation Links -->
+			<div class="nav-links">
+				<a href="/product/detail">Detail</a>
+				<a href="/product/new">Product</a>
+				<a href="/paypal">Hello</a>
 			</div>
-			</main>
-		</div>
 
-<!--footer-->
-	</div>
+			<!-- Product List -->
+			<div class="product-container">
+				<div th:each="product : ${productList}" class="product-card">
+					<a th:href="@{/product/orderProductDetail/{productId} (productId= ${product.id})}">
+						<img th:src="@{'/img/shirts.jpg'}" alt="Product Image" class="product-image">
+						<div class="product-info">
+							<p class="product-name" th:text="${product.name}">Product Name</p>
+							<p class="product-price" th:text="${product.price} + '원'">0원</p>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="clearfix"></div>
+		</div>
+	</main>
+</div>
 </body>
 </html>

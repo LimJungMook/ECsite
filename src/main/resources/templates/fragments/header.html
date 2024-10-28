@@ -9,15 +9,15 @@
 	<div class="gnb">
 		<ul>
 			<li><a th:href="@{/manageProduct}">商品管理</a></li>
-			<li><a th:href="@{/myPage(membersDto.no=${session.sessionNo})}">my page</a></li>
+			<li><a th:href="@{/myPage}">my page</a></li>
 			<li>
 				<form th:action="@{/logout}" method="post">
 					<button type="submit">logout</button>
 				</form>
 			</li>
-			<li><a th:href="@{/moveRegister}">社員加入</a></li>
-			<li><a th:href="@{/moveLogin}">ログイン</a></li>
-			<li><a th:href="@{/main}">home</a></li>
+			<li><a th:href="@{/member/new}">社員加入</a></li>
+			<li><a th:href="@{/member/login}">ログイン</a></li>
+			<li><a th:href="@{/}">home</a></li>
 			<li><a th:href="@{/cart(cartDto.membersNo=${session.sessionNo})}">cart</a></li>
 		</ul>
 	</div>
