@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type">
     <title>Insert title here</title>
-    <link rel="stylesheet" type="text/css" href="./css/shop.css">
+    <link rel="stylesheet" type="text/css" href="/css/shop1.css">
 </head>
 <body>
 <div class="wrap">
@@ -24,14 +24,48 @@
             </thead>
             <tr th:each="order : ${order}">
                 <td th:text="${order.id}"></td>
-                <td th:text="${order.date}"></td>
-                <td th:text="${order.name}"></td>
-                <td th:text="${order.price}"></td>
-                <td th:text="${order.status}"></td>
-                <td><a href='cancelOrder?ordersDto.no=<s:property value="no" />'/>
+                <td th:text="${order.orderDate}"></td>
+                <td>
+                    <ul>
+                        <li th:each="orderProductList : ${order.orderProductList}">
+                            <span th:text="${orderProductList.product.name}"></span> -
+                            <span th:text="${orderProductList.product.price}"></span>
+                        </li>
+                    </ul>
+                </td>
+                <td th:text="${order.orderStatus}"></td>
+                <td><a th:href="@{/order/cancel/{id} (id = ${order.id})}">
                     <input type="button" value="取り消し"></a>
                 </td>
             </tr>
+
+<!--            <tr th:each="order : ${order}">-->
+<!--                &lt;!&ndash; 공통 데이터인 id, orderDate, status 컬럼 설정 &ndash;&gt;-->
+<!--                <td th:text="${order.id}" rowspan="${#lists.size(order.orderProductList)}"></td>-->
+<!--                <td th:text="${order.orderDate}" rowspan="${#lists.size(order.orderProductList)}"></td>-->
+
+<!--                &lt;!&ndash; orderProductList의 첫 번째 항목 출력 &ndash;&gt;-->
+<!--                <td>-->
+<!--                    <span th:text="${order.orderProductList[0].product.name}"></span> - -->
+<!--                    <span th:text="${order.orderProductList[0].product.price}"></span>-->
+<!--                </td>-->
+
+<!--                <td th:text="${order.orderStatus}" rowspan="${#lists.size(order.orderProductList)}"></td>-->
+<!--                <td rowspan="${#lists.size(order.orderProductList)}">-->
+<!--                    <a th:href="@{'/cancelOrder?ordersDto.no=' + ${order.id}}">-->
+<!--                        <input type="button" value="取り消し">-->
+<!--                    </a>-->
+<!--                </td>-->
+<!--            </tr>-->
+
+<!--            &lt;!&ndash; 두 번째 항목부터 반복하여 출력 &ndash;&gt;-->
+<!--            <tr th:each="product, iterStat : ${order.orderProductList}" th:if="${!iterStat.first}">-->
+<!--                <td>-->
+<!--                    <span th:text="${product.product.name}"></span> - -->
+<!--                    <span th:text="${product.product.price}"></span>-->
+<!--                </td>-->
+<!--            </tr>-->
+
             <tr>
                 <td colspan="6" class="font_right">
                     <a href='<c:url value="/myPage"/>'><input type="button" class="cancel" value="戻る"></a>

@@ -10,9 +10,9 @@
     <div th:replace="fragments/header :: header"/>
     <div class="input-wrapper">
         <h2>商品登録</h2>
-        <form role="form" action="/product/new" th:object="${productForm}" method="post">
+        <form role="form" action="/product/new" th:object="${productForm}" method="post" enctype="multipart/form-data">
             <div class="center">
-                <input type="image" src="./img/shirts.jpg" class="img">
+                <input type="file" th:field="*{imageFile}" class="img">
             </div>
 
             <label th:for="name">商品名</label>

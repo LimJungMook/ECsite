@@ -23,7 +23,7 @@ public class CartRepository {
     }
 
     public List<Cart> findCartByMember(Long memberId) {
-        return em.createQuery("select c from Cart c where memberId := memberId", Cart.class)
+        return em.createQuery("select c from Cart c where c.member.id =: memberId", Cart.class)
                 .setParameter("memberId", memberId)
                 .getResultList();
     }

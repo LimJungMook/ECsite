@@ -1,5 +1,6 @@
 package com.mookShopping.mook.domain;
 
+import com.mookShopping.mook.exception.OutOfStockException;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,12 +24,18 @@ public class Product {
 
     private Long price;
 
+    private String filePath;
+
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<OrderProduct> orderProductList = new ArrayList<>();
 
 
     public void remove(int quantity) {
-        this.quantity -= quantity;
+        int restQuantity = this.quantity - quantity;
+        if (restQuantity < 0) {
+            throw new OutOfStockException("상품의 재고가 부족합니다. 현재 재고 수량: " + restQuantity);
+        }
+        this.quantity = restQuantity;
     }
 
     public void addStock(int quantity) {

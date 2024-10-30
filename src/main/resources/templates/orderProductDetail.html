@@ -12,7 +12,8 @@
         <h2>シャツ</h2>
         <form role="form" action="/order/new" th:object="${product}" method="post">
             <div class="center">
-                <input type="image" src="img/shirts.jpg" class="img">
+                <img th:src="|${product.filePath}|" alt="img"/>
+<!--                <label th:text="${product.filePath}"></label>-->
             </div>
             <input type="hidden" th:field="*{id}"/>
             <label th:for="name">商品名</label>

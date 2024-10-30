@@ -15,7 +15,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @Slf4j
@@ -50,14 +52,15 @@ public class MemberController {
     }
 
     @GetMapping("/member/login")
-    public String getLoginMember(Model model) {
-        model.addAttribute("loginForm", new LoginForm());
+    public String getLoginMember(@ModelAttribute ("loginForm") LoginForm loginForm) {
         return "login";
     }
 
 
     @PostMapping("/member/login")
-    public String loginMember(@Valid LoginForm loginForm, BindingResult bindingResult, HttpServletRequest request) {
+    public String loginMember(@Valid LoginForm loginForm, BindingResult bindingResult,
+                              @RequestParam(defaultValue = "/") String redirectURL,
+                              HttpServletRequest request) {
         if (bindingResult.hasErrors()) {
             return "login";
         }
@@ -74,7 +77,7 @@ public class MemberController {
         HttpSession session = request.getSession();
         session.setAttribute("loginMember", loginMember);
 
-        return "main";
+        return "redirect:" + redirectURL;
     }
 
     @PostMapping("/logout")

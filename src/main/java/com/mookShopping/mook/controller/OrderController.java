@@ -13,7 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 @Slf4j
@@ -38,5 +41,21 @@ public class OrderController {
         log.info("savedOrder= {}", savedOrder);
 
         return "redirect:/";
+    }
+
+    @GetMapping("/order/history")
+    public String orderHistoryForm(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        Member loginMember = (Member)session.getAttribute("loginMember");
+
+        List<Order> historyList = orderService.findOrderByMemberId(loginMember.getId());
+        model.addAttribute("order", historyList);
+        return "record";
+    }
+
+    @GetMapping("order/cancel/{id}")
+    public String cancelOrder(@PathVariable Long id) {
+        orderService.cancelOrder(id);
+        return "redirect:/order/history";
     }
 }

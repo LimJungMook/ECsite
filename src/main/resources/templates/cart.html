@@ -1,74 +1,72 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="./css/shop.css">
+    <meta http-equiv="Content-Type" content="text/html">
+    <title>Insert title here</title>
+    <link rel="stylesheet" type="text/css" href="/css/shop1.css">
 
 </head>
 <body>
-	<div class="wrap">
+<div class="wrap">
+    <div th:replace="fragments/header :: header"/>
 
-		<div class="input-wrapper">
-			<h2>ショッピングバッグ</h2>
-				<table>
-					<thead class="table_over">
-						<tr>
-							<td></td>
-							<td>商品名</td>
-							<td>値段</td>
-							<td>細部内容</td>
-							<td>size</td>
-							<td>数量</td>
-							<td>削除</td>
-						</tr>
-					</thead>
+    <div class="input-wrapper">
+        <h2>ショッピングバッグ</h2>
+        <table>
+            <thead class="table_over">
+            <tr>
+                <td></td>
+                <td>商品名</td>
+                <td>値段</td>
+                <td>細部内容</td>
+                <td>size</td>
+                <td>数量</td>
+                <td>削除</td>
+            </tr>
+            </thead>
 
-						<tr th:each="product: ${product}">
-							<td><input type="checkbox" name="selectedItems" th:value="${product.id}" /></td>
-							<td><input th:text="${product.name}"></td>
-							<td><input th:text="${product.name}"></td>
-							<td><input th:text="${product.name}"></td>
-							<td><input th:text="${product.name}"></td>
-							<td><input type="number" name="quantities[${product.id}]" th:value="${product.quantity}" /></td>
-							<td><input type="button" value="変更" onclick="edit()"></td>
-						</tr>
+            <tr th:each="cart: ${cart}">
+                <td><input type="checkbox" name="selectedItems" th:value="${cart.id}"/></td>
+                <td><input th:text="${cart.name}"></td>
+                <td><input th:text="${cart.price}"></td>
+                <td><input type="number" name="quantities[${cart.id}]" th:value="${cart.quantity}"/></td>
+                <td><input type="button" value="変更" onclick="edit()"></td>
+            </tr>
 
-					<tr class="table_over">
-						<td>値段</td>
-						<td colspan="6" class="font_right">20,000</td>
-					</tr>
-					<tr>
-						<td colspan="7">
-							<button type="button" class="submit" onclick="order()">注文</button>
-							<button type="button" class="cancel" onclick="deleteCart()">削除</button>
-						</td>
-					</tr>
-				</table>
-			</form>
-		</div>
-	</div>
+            <tr class="table_over">
+                <td>値段</td>
+                <td colspan="6" class="font_right">20,000</td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <button type="button" class="submit" onclick="order()">注文</button>
+                    <button type="button" class="cancel" onclick="deleteCart()">削除</button>
+                </td>
+            </tr>
+        </table>
+        </form>
+    </div>
+</div>
 <!--footer-->
 <script>
-	var form = document.getElementById('form');
+    var form = document.getElementById('form');
 
-	function order() {
-		console.log(form);
-		form.action = 'moveOrderToCart';
-		form.submit();
-	}
-	function edit() {
-		console.log(form);
-		form.action = 'changeCart';
-		form.submit();
-	}
-	function deleteCart() {
-		console.log(form);
-		form.action = 'deleteCart';
-		form.submit();
-	}
+    function order() {
+        console.log(form);
+        form.action = 'moveOrderToCart';
+        form.submit();
+    }
+    function edit() {
+        console.log(form);
+        form.action = 'changeCart';
+        form.submit();
+    }
+    function deleteCart() {
+        console.log(form);
+        form.action = 'deleteCart';
+        form.submit();
+    }
 </script>
-
 
 
 </body>
