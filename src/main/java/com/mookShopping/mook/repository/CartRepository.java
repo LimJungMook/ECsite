@@ -1,6 +1,7 @@
 package com.mookShopping.mook.repository;
 
 import com.mookShopping.mook.domain.Cart;
+import com.mookShopping.mook.domain.CartItem;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,9 @@ public class CartRepository {
 
     public void deleteCart(Cart cart) {
         em.remove(cart);
+    }
+
+    public void deleteCartItem(CartItem cartItem) {
+        em.remove(cartItem);
     }
 }

@@ -11,27 +11,27 @@
 		<div class="input-wrapper">
 			<h2>社員加入</h2>
 			<form role="form" action="/member/new" th:object="${memberForm}" method="post">
-				<label th:for="name">名前</label>
+				<label th:for="name" th:text="#{member.name}">名前</label>
 				<input type="text" th:field="*{name}" placeholder="名前を入力してください" class="form-control"
 					th:class="${#fields.hasErrors('name')}?'form-control fieldError' : 'form-control'">
 				<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrect date</p>
 
-				<label th:for="mail">e-mail</label>
+				<label th:for="mail" th:text="#{member.mail}">e-mail</label>
 				<input type="text" th:field="*{mail}" placeholder="메일을 적어주세요" class="form-control"
 					th:class="${#fields.hasErrors('mail')}?'form-control fieldError' : 'form-control'">
 				<p th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}">Incorrect date</p>
 
-				<label th:for="password">PASSWORD</label>
+				<label th:for="password" th:text="#{member.password}">PASSWORD</label>
 				<input type="password" th:field="*{password}" placeholder="PASSWORDを入力してください"
 					class="form-control" th:class="${#fields.hasErrors('password')}?'form-control fieldError' : 'form-control'">
 				<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Incorrect date</p>
 
-				<label th:for="confirmPassword">PASSWORD 確認</label>
+				<label th:for="confirmPassword" th:text="#{member.passwordConfirm}">PASSWORD 確認</label>
 				<input type="password" th:field="*{confirmPassword}" placeholder="PASSWORD 確認" class="form-control"
 					th:class="${#fields.hasErrors('confirmPassword')}?'form-control fieldError': 'form-control'">
 				<p th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">Incorrect date</p>
 
-				<label th:for="address">住所</label>
+				<label th:for="address" th:text="#{member.address}">住所</label>
 				<input type="text" th:field="*{address}" placeholder="住所を入力してください" class="form-control">
 <!--				<div>-->
 <!--					<radio name="membersDto.manager" id="manager"-->

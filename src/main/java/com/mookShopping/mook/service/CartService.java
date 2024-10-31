@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -61,10 +62,31 @@ public class CartService {
         return cartRepository.findCartByMember(memberId);
     }
 
-    public void deleteCart(Long cartId) {
-        Cart cart = cartRepository.findCartById(cartId);
-        cartRepository.deleteCart(cart);
+
+    public void deleteCart(Long memberId,Long cartId) {
+        Cart cart = cartRepository.findCartByMember(memberId);
+        CartItem optionalCartItem = cart.getCartItems().stream()
+                .filter(cartItem -> cartItem.getId().equals(cartId))
+                .findFirst()
+                .orElse(null);
+        cart.deleteCartItem(optionalCartItem);
+        cartRepository.deleteCartItem(optionalCartItem);
+        Cart cart1 = cartRepository.findCartByMember(memberId);
+        //        cart.getCartItems().remove(optionalCartItem);
     }
 
 
+
+    public void updateQuantity(Long cartItemId, Integer newQuantity, Long memberId) {
+        Cart cartByMember = cartRepository.findCartByMember(memberId);
+        CartItem optionalCartItem = cartByMember.getCartItems().stream()
+                .filter(cartItem -> cartItemId.equals(cartItem.getId()))
+                .findFirst()
+                .orElse(null);
+        optionalCartItem.setQuantity(newQuantity);
+        cartByMember.addCartItem(optionalCartItem);
+//        CartItem cartItem = cartItemRepository.findById(cartItemId).orElseThrow(() -> new EntityNotFoundException("CartItem not found"));
+//        cartItem.setQuantity(newQuantity);
+//        cartItemRepository.save(cartItem); // 변경된 수량을 저장합니다.
+    }
 }

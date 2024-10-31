@@ -45,6 +45,10 @@ public class Cart {
         cartItem.setCart(this);
     }
 
+    public void deleteCartItem(CartItem cartItem) {
+        cartItems.remove(cartItem);
+    }
+
     public void setMember(Member member) {
         this.member = member;
         member.setCart(this);

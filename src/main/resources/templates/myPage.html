@@ -17,28 +17,28 @@
 		</div>
 		<form role="form" action="modifyMember" th:object="${memberForm}" method="post">
 
-			<label th:for="id">番号</label>
+			<label th:for="id" th:text="#{member.id}">番号</label>
 			<input type="text" th:field="*{id}" class="form-control" readonly>
 
-			<label th:for="mail">mail</label>
+			<label th:for="mail" th:text="#{member.mail}">mail</label>
 			<input type="text" th:field="*{mail}" class="form-control" readonly>
 
-			<label th:for="password">PASSWORD</label>
+			<label th:for="password" th:text="#{member.password}" >PASSWORD</label>
 			<input type="password" th:field="*{password}" class="form-control"
 				th:class="${#fields.hasErrors('password')} ? 'form-control fieldError' : 'form-control'">
 			<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
 
-			<label th:for="confirmPassword">PASSWORD 確認</label>
+			<label th:for="confirmPassword" th:text="#{member.passwordConfirm}">PASSWORD 確認</label>
 			<input type="password" th:field="*{confirmPassword}" class="form-control"
 				th:class="${#fields.hasErrors('confirmPassword')} ? 'form-control fieldError':'form-control'">
 			<p th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></p>
 
-			<label th:for="name">名前</label>
+			<label th:for="name" th:text="#{member.name}">名前</label>
 			<input type="text" th:field="*{name}" class="form-control"
 				th:class="${#fields.hasErrors('name')}? 'form-control fieldError' : 'form-control'">
 			<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
 
-			<label th:for="address">住所</label>
+			<label th:for="address" th:text="#{member.address}">住所</label>
 			<input type="text" th:field="*{address}" class="form-control">
 
 			<input type="submit" value="情報修訂">

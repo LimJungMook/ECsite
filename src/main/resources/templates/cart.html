@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Insert title here</title>
     <link rel="stylesheet" type="text/css" href="/css/shop1.css">
 
@@ -12,61 +13,96 @@
 
     <div class="input-wrapper">
         <h2>ショッピングバッグ</h2>
-        <table>
-            <thead class="table_over">
-            <tr>
-                <td></td>
-                <td th:text="#{product.name}">商品名</td>
-                <td th:text="#{product.price}">値段</td>
-                <td th:text="#{product.quantity}">数量</td>
-                <td th:text="#{cart.update}">変更</td>
-            </tr>
-            </thead>
+        <form action="/cart/update" method="post">
+            <table>
+                <thead class="table_over">
+                <tr>
+                    <td></td>
+                    <td th:text="#{product.id}">id</td>
+                    <td th:text="#{product.name}">商品名</td>
+                    <td th:text="#{product.price}">値段</td>
+                    <td th:text="#{product.quantity}">数量</td>
+                    <td th:text="#{cart.update}">変更</td>
+                </tr>
+                </thead>
 
-            <tr th:each="cartItem: ${cart.cartItems}">
-                <td><input type="checkbox" name="selectedItems" th:value="${cartItem.id}"/></td>
-                <td><label th:text="${cartItem.id}"/></td>
-                <td><label th:text="${cartItem.product.name}"/></td>
-                <td><label th:text="${cartItem.product.price}"/></td>
-                <td><input type="number" name="quantities[${cartItem.id}]" th:value="${cartItem.quantity}"/></td>
-                <td><input type="button" th:attr="value=#{button.update}" onclick="edit()"></td>
-            </tr>
+                <tr th:each="cartItem: ${cart.cartItems}">
+                    <td><input type="checkbox" name="selectedItems" th:value="${cartItem.id}"/></td>
+                    <td><label th:text="${cartItem.id}"/></td>
+                    <td><label th:text="${cartItem.product.name}"/></td>
+                    <td><label th:text="${cartItem.product.price}"/></td>
+                    <td>
+                        <select name="quantities[${cartItem.id}]"
+                                th:onchange="|selectBoxChange('${cartItem.id}', this.value);|">
+                            <option th:each="i : ${quantities}" th:value="${i}"
+                                    th:text="${i}"
+                                    th:selected="${i == cartItem.quantity}"></option>
+                        </select>
+                    <td>
+                        <button type="button" th:onclick="|deleteCartItem('${cartItem.id}')|" th:text="#{button.delete}">
+                            삭제
+                        </button>
+                    </td>
+                </tr>
 
-            <tr class="table_over">
-                <td>値段</td>
-                <td colspan="6" class="font_right">20,000</td>
-            </tr>
-            <tr>
-                <td colspan="7">
-                    <button type="button" class="submit" onclick="order()">注文</button>
-                    <button type="button" class="cancel" onclick="deleteCart()">削除</button>
-                </td>
-            </tr>
-        </table>
+                <tr class="table_over">
+                    <td>値段</td>
+                    <td colspan="6" class="font_right">20,000</td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <button type="button" class="submit" onclick="order()">注文</button>
+                        <button type="button" class="cancel" onclick="deleteCart()">削除</button>
+                    </td>
+                </tr>
+            </table>
         </form>
     </div>
 </div>
 <!--footer-->
-<script>
-    var form = document.getElementById('form');
-
-    function order() {
-        console.log(form);
-        form.action = 'moveOrderToCart';
-        form.submit();
-    }
-    function edit() {
-        console.log(form);
-        form.action = 'changeCart';
-        form.submit();
-    }
-    function deleteCart() {
-        console.log(form);
-        form.action = 'deleteCart';
-        form.submit();
-    }
-</script>
-
 
 </body>
+<script>
+    function selectBoxChange(id,th) {
+	if(confirm("변경 하시겠습니까?")) {
+		$.ajax({
+			url: "/cart/updateQuantity",
+			type: "POST",
+			contentType: "application/json",
+			data : JSON.stringify({ "cartItemId": id, "quantity": th }) ,
+			success: function(data, textStatus, xhr) {
+				alert("변경 성공!");
+				document.location.reload(true);
+				console.log(data);
+			},
+			error: function(xhr, status, error) {
+				console.log(error);
+				alert("실패")
+			}
+		});
+	} else {
+	}
+}
+
+function deleteCartItem(cartItemId) {
+    if (confirm("정말로 삭제하시겠습니까?")) {
+        $.ajax({
+            url: "/cart/delete", // 서버의 삭제 처리 엔드포인트
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ "cartItemId": cartItemId }),
+            success: function(response) {
+                alert("삭제 성공!");
+                document.location.reload(true); // 삭제 후 페이지 새로고침
+            },
+            error: function(xhr, status, error) {
+                console.error("Status: " + status);
+                console.error("Error: " + error);
+                alert("삭제 실패");
+            }
+        });
+    }
+}
+</script>
+
 </html>
