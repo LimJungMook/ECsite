@@ -45,11 +45,4 @@ public class OrderProduct {
         product.addStock(quantity);
     }
 
-//    CREATE TABLE OrderProduct(
-//            order_product_id INT PRIMARY KEY,
-//            order_id int,
-//            product_id int,
-//            quantity int,
-//            orderprice int
-//    )
 }

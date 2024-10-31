@@ -52,14 +52,15 @@ public class MemberController {
     }
 
     @GetMapping("/member/login")
-    public String getLoginMember(@ModelAttribute ("loginForm") LoginForm loginForm) {
+    public String getLoginMember(@ModelAttribute("loginForm") LoginForm loginForm,
+                                 @RequestParam(value = "redirectURL", defaultValue = "/") String redirectURL) {
         return "login";
     }
 
 
     @PostMapping("/member/login")
     public String loginMember(@Valid LoginForm loginForm, BindingResult bindingResult,
-                              @RequestParam(defaultValue = "/") String redirectURL,
+                              @RequestParam(value = "redirectURL", defaultValue = "/") String redirectURL,
                               HttpServletRequest request) {
         if (bindingResult.hasErrors()) {
             return "login";

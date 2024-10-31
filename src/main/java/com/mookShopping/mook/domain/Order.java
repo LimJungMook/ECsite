@@ -56,10 +56,4 @@ public class Order {
             orderProduct.cancel();
         }
     }
-//    CREATE TABLE orders(
-//            order_ID INT PRIMARY KEY,
-//            memberId int,
-//            orderStatus int,
-//            orderDate date
-//    );
 }

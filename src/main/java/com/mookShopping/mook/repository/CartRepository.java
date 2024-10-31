@@ -2,6 +2,7 @@ package com.mookShopping.mook.repository;
 
 import com.mookShopping.mook.domain.Cart;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -22,8 +23,16 @@ public class CartRepository {
         return em.find(Cart.class, cartId);
     }
 
-    public List<Cart> findCartByMember(Long memberId) {
-        return em.createQuery("select c from Cart c where c.member.id =: memberId", Cart.class)
+    public Cart findCartByMember(Long memberId) {
+        List<Cart> cartList = em.createQuery("select c from Cart c where c.member.id = :memberId", Cart.class)
+                .setParameter("memberId", memberId)
+                .getResultList();
+
+        return cartList.isEmpty() ? null : cartList.get(0);
+    }
+
+    public List<Cart> findCartList(Long memberId) {
+        return em.createQuery("select c from Cart c where c.member.id = :memberId", Cart.class)
                 .setParameter("memberId", memberId)
                 .getResultList();
     }

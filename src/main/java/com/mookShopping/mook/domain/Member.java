@@ -29,11 +29,8 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
 
+    @OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
+    private Cart cart;
 
-//    CREATE TABLE members(
-//    member_id INT PRIMARY KEY,
-//    NAME VARCHAR(255),
-//    mail VARCHAR(255),
-//    password VARCHAR(255),
-//    address VARCHAR(255) );
+
 }

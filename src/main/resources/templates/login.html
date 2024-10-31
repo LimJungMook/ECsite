@@ -9,13 +9,16 @@
 	<div class="wrap">
 		<div th:replace="fragments/header :: header"/>
 		<div class="input-wrapper">
-			<h2>login</h2>
+			<h2 th:text="login">login</h2>
 			<form role="form" action="/member/login" th:object="${loginForm}" method="post">
-				<label th:for="mail">ID</label>
+				<input type="hidden" name="redirectURL" th:value="${param.redirectURL}">
+
+				<label th:for="mail" th:text="#{login.mail}">ID</label>
 				<input type="text" th:field="*{mail}" class="form-control" placeholder="ID"
 					   th:class="${#fields.hasErrors('mail')} ? 'form-control fieldError' : 'form-control'">
 				<p th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}"></p>
-				<label th:for="password">PASSWORD</label>
+
+				<label th:for="password" th:text="#{login.password}">PASSWORD</label>
 				<input type="text" th:field="*{password}" placeholder="PASSWORD" class="form-control"
 					th:class="${#fields.hasErrors('password')}? 'form-control fieldError' : 'form-control'">
 				<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
@@ -23,10 +26,6 @@
 				<a href="/member/new">社員加入</a>
 			</form>
 		</div>
-<!--		<s:property value="membersDto.name"/>-->
-<!--		<s:property value="membersDto.id"/>-->
-<!--		<s:property value="membersDto.password"/>-->
-<!--		<s:property value="membersDto.address"/>-->
 	</div>
 <!--footer-->
 </body>

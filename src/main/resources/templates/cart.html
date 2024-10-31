@@ -16,21 +16,20 @@
             <thead class="table_over">
             <tr>
                 <td></td>
-                <td>商品名</td>
-                <td>値段</td>
-                <td>細部内容</td>
-                <td>size</td>
-                <td>数量</td>
-                <td>削除</td>
+                <td th:text="#{product.name}">商品名</td>
+                <td th:text="#{product.price}">値段</td>
+                <td th:text="#{product.quantity}">数量</td>
+                <td th:text="#{cart.update}">変更</td>
             </tr>
             </thead>
 
-            <tr th:each="cart: ${cart}">
-                <td><input type="checkbox" name="selectedItems" th:value="${cart.id}"/></td>
-                <td><input th:text="${cart.name}"></td>
-                <td><input th:text="${cart.price}"></td>
-                <td><input type="number" name="quantities[${cart.id}]" th:value="${cart.quantity}"/></td>
-                <td><input type="button" value="変更" onclick="edit()"></td>
+            <tr th:each="cartItem: ${cart.cartItems}">
+                <td><input type="checkbox" name="selectedItems" th:value="${cartItem.id}"/></td>
+                <td><label th:text="${cartItem.id}"/></td>
+                <td><label th:text="${cartItem.product.name}"/></td>
+                <td><label th:text="${cartItem.product.price}"/></td>
+                <td><input type="number" name="quantities[${cartItem.id}]" th:value="${cartItem.quantity}"/></td>
+                <td><input type="button" th:attr="value=#{button.update}" onclick="edit()"></td>
             </tr>
 
             <tr class="table_over">
